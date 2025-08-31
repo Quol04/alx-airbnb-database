@@ -1,12 +1,6 @@
--- Airbnb Database Schema
--- Author: [Your Name]
--- Repository: alx-airbnb-database
--- Description: SQL CREATE TABLE statements for Airbnb clone project
-
-
 -- ==========================
 -- Users Table
--- ==========================
+
 CREATE TABLE Users (
     user_id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -19,7 +13,7 @@ CREATE TABLE Users (
 
 -- ==========================
 -- Property Table
--- ==========================
+
 CREATE TABLE Property (
     property_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
@@ -39,7 +33,7 @@ CREATE INDEX idx_property_country ON Property(country);
 
 -- ==========================
 -- Booking Table
--- ==========================
+
 CREATE TABLE Booking (
     booking_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
@@ -59,7 +53,7 @@ CREATE INDEX idx_booking_property ON Booking(property_id);
 
 -- ==========================
 -- Payment Table
--- ==========================
+
 CREATE TABLE Payment (
     payment_id SERIAL PRIMARY KEY,
     booking_id INT NOT NULL,
@@ -75,7 +69,7 @@ CREATE INDEX idx_payment_booking ON Payment(booking_id);
 
 -- ==========================
 -- Review Table
--- ==========================
+
 CREATE TABLE Review (
     review_id SERIAL PRIMARY KEY,
     booking_id INT NOT NULL UNIQUE,

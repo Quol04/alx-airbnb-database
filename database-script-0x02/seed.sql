@@ -1,9 +1,3 @@
--- Airbnb Database Seed Data
--- Author: [Your Name]
--- Repository: alx-airbnb-database
--- Description: Sample INSERT statements for Users, Property, Booking, Payment, and Review
-
--- ==========================
 -- Users
 -- ==========================
 INSERT INTO Users (first_name, last_name, email, phone_number, password)
@@ -15,7 +9,7 @@ VALUES
 
 -- ==========================
 -- Property
--- ==========================
+
 INSERT INTO Property (user_id, title, description, address, city, country, price_per_night)
 VALUES
 (1, 'Cozy Apartment in Nairobi', '2-bedroom fully furnished apartment with WiFi', '123 Riverside Drive', 'Nairobi', 'Kenya', 50.00),
@@ -25,7 +19,7 @@ VALUES
 
 -- ==========================
 -- Booking
--- ==========================
+
 INSERT INTO Booking (user_id, property_id, start_date, end_date, total_price, booking_status)
 VALUES
 (2, 1, '2025-09-10', '2025-09-15', 250.00, 'confirmed'),
@@ -35,7 +29,7 @@ VALUES
 
 -- ==========================
 -- Payment
--- ==========================
+
 INSERT INTO Payment (booking_id, payment_method, amount, status, paid_at)
 VALUES
 (1, 'credit_card', 250.00, 'paid', '2025-09-01 10:00:00'),
@@ -44,7 +38,7 @@ VALUES
 
 -- ==========================
 -- Review
--- ==========================
+
 INSERT INTO Review (booking_id, user_id, rating, comment)
 VALUES
 (1, 2, 5, 'Amazing stay! The host was very helpful.'),

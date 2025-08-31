@@ -19,6 +19,7 @@ The purpose of this document is to outline the entities, attributes, and relatio
 - created_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 
 ### 2. Property
+
 - **property_id** (PK)
 - user_id (FK → User.user_id)
 - property_id: Primary Key, UUID, Indexed
@@ -32,6 +33,7 @@ The purpose of this document is to outline the entities, attributes, and relatio
 
 
 ### 3. Booking
+
 - **booking_id** (PK)
 - user_id (FK → User.user_id)
 - property_id (FK → Property.property_id)
@@ -45,6 +47,7 @@ The purpose of this document is to outline the entities, attributes, and relatio
 - created_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 
 ### 4. Review
+
 - **review_id** (PK)
 - booking_id (FK → Booking.booking_id)
 - user_id (FK → User.user_id)
@@ -56,6 +59,7 @@ The purpose of this document is to outline the entities, attributes, and relatio
 - created_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 
 ### 5. Payment
+
 - **payment_id** (PK)
 - booking_id (FK → Booking.booking_id)
 - payment_id: Primary Key, UUID, Indexed
@@ -74,6 +78,7 @@ The purpose of this document is to outline the entities, attributes, and relatio
 ---
 
 ## Relationships
+
 1. **User – Booking**
    - A user can make many bookings.
    - A booking belongs to one user.

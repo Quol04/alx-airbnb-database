@@ -6,21 +6,23 @@ The objective of this document is to review the Airbnb database schema and apply
 ---
 
 ## Step 1: First Normal Form (1NF)
+
 **Requirement:**  
 - Eliminate repeating groups.  
 - Ensure each column contains atomic (indivisible) values.  
 - Each row must be unique.
 
 **Applied to our schema:**  
+
 - All attributes (e.g., `first_name`, `last_name`, `email`, `address`, etc.) are atomic.  
 - Every table has a primary key (`user_id`, `property_id`, `booking_id`, etc.).  
 - No repeating groups (e.g., multiple emails or phone numbers in a single column).  
-
 
 ---
 
 ## Step 2: Second Normal Form (2NF)
 **Requirement:**  
+
 - Must be in 1NF.  
 - No partial dependency (i.e., no attribute should depend on only part of a composite primary key).  
 
@@ -34,10 +36,12 @@ The objective of this document is to review the Airbnb database schema and apply
 
 ## Step 3: Third Normal Form (3NF)
 **Requirement:**  
+
 - Must be in 2NF.  
 - No transitive dependencies (non-key attributes should not depend on other non-key attributes).  
 
 **Applied to our schema:**  
+
 - **User Table**: No transitive dependencies (e.g., `email` → `phone_number` does not exist).  
 - **Property Table**: Attributes like `city` and `country` are descriptive but do not depend on each other. If we want to avoid redundancy (e.g., multiple properties in the same city/country), we could normalize further into a separate `Location` table.  
 - **Booking Table**: `total_price` is derived from `price_per_night × number_of_nights`. For strict 3NF, derived attributes should not be stored but calculated.  
@@ -50,6 +54,7 @@ After review, the schema is in **3NF**.
 ---
 
 ## Final Notes
+
 - The database design is now in **Third Normal Form (3NF)**.  
 - Redundancies were identified in the `Property` table (`city`, `country`) and can be factored into a `Location` table if desired.  
 - Derived attributes like `total_price` can be excluded from storage and computed dynamically to maintain normalization.
