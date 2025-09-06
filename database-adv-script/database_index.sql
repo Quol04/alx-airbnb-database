@@ -6,13 +6,33 @@
 
 -- Write SQL CREATE INDEX commands to create appropriate indexes for those columns.
 
-CREATE INDEX idx_user_email ON users(email);
-CREATE INDEX idx_booking_user ON bookings(user_id);
-CREATE INDEX idx_booking_property ON bookings(property_id);
-CREATE INDEX idx_property_owner ON properties(owner_id);
-CREATE INDEX idx_property_location ON properties(location);
-CREATE INDEX idx_property_price ON properties(price);
-CREATE INDEX idx_booking_dates ON bookings(start_date, end_date);
+-- Indexes for Users table
+CREATE INDEX idx_users_email ON users(email);
+
+-- Indexes for Bookings table
+CREATE INDEX idx_bookings_user_id ON bookings(user_id);
+CREATE INDEX idx_bookings_property_id ON bookings(property_id);
+CREATE INDEX idx_bookings_start_date ON bookings(start_date);
+CREATE INDEX idx_bookings_end_date ON bookings(end_date);
+
+-- Indexes for Properties table
+CREATE INDEX idx_properties_location ON properties(location);
+
 -- Measure the query performance before and after adding indexes using EXPLAIN or ANALYZE
--- (This step is typically done in a database environment and cannot be represented in a static SQL file).
--- Drop indexes if necessary to clean up
+
+-- before adding indexes:
+EXPLAIN SELECT * 
+FROM bookings 
+WHERE user_id = 5;
+
+-- after adding indexes:
+EXPLAIN SELECT * 
+FROM bookings 
+WHERE user_id = 5;
+
+-- after join optimization
+EXPLAIN SELECT u.name, b.id, p.title
+FROM users u
+JOIN bookings b ON u.id = b.user_id
+JOIN properties p ON b.property_id = p.id
+WHERE p.location = 'Nairobi';
