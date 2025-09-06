@@ -36,14 +36,14 @@ Query performance was measured before and after adding indexes using `EXPLAIN` o
 **Before Index:**
 
 ```sql
-EXPLAIN ANALYZE SELECT * FROM Booking WHERE user_id = 123;
+EXPLAIN SELECT * FROM Booking WHERE user_id = 123;
 -- Result: Full table scan, query time: 1200 ms
 ```
 
 **After Index:**
 
 ```sql
-EXPLAIN ANALYZE SELECT * FROM Booking WHERE user_id = 123;
+EXPLAIN SELECT * FROM Booking WHERE user_id = 123;
 -- Result: Index scan, query time: 100 ms
 ```
 

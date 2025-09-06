@@ -32,14 +32,12 @@ CREATE INDEX idx_bookings_future_user_id ON bookings_future(user_id);
 -- Test the performance of queries on the partitioned table (e.g., fetching bookings by date range).
 
 -- before partitioning
-EXPLAIN ANALYZE
-SELECT *
+EXPLAIN SELECT *
 FROM bookings
 WHERE start_date BETWEEN '2025-01-01' AND '2025-06-30';
 
 -- after partitioning
-EXPLAIN ANALYZE
-SELECT *
+EXPLAIN SELECT *
 FROM bookings
 WHERE start_date BETWEEN '2025-01-01' AND '2025-06-30';
 
